@@ -1,3 +1,32 @@
-<p>
-  characters works!
-</p>
+<app-nav selectedPage="Characters"></app-nav>
+<div class="container">
+  <div class="starter-template">
+    <h1>Personajes</h1>
+    <hr/>
+    <div *ngIf="characters.length > 0; then tableContent else emptyMessage"></div>
+  </div>
+</div>
+<app-footer></app-footer>
+<ng-template #tableContent>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Altura</th>
+        <th>Color de piel/pelaje</th>
+        <th>Género</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let character of characters">
+      <tr>
+        <td>{{character.name}}</td>
+        <td>{{character.height}}</td>
+        <td>{{character.skin_color}}</td>
+        <td>{{character.gender}}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
+<ng-template #emptyMessage>
+  <ngb-alert [dismissible]="false" [type]="alert.type" (close)="closeAlert(alert)">{{alert.message}}</ngb-alert>
+</ng-template>
