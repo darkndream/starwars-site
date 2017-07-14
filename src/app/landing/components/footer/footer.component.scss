@@ -1,0 +1,14 @@
+a, a:focus, a:hover {
+    color: #fff;
+}
+.mastfoot {
+    color: rgba(255,255,255,.5);
+    @media (min-width: 40em) {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    @media (min-width: 62em) {
+        width: 42rem;
+    }
+}

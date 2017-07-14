@@ -1,3 +1,20 @@
-<p>
-  frontpage works!
-</p>
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <img class="masthead-brand logo" src="../../../assets/starwars-logo-white.png" alt="Star Wars Logo">
+          <app-nav selectedPage="Frontpage"></app-nav>
+        </div>
+      </div>
+      <div class="inner cover">
+        <h1 class="cover-heading">Sitio de personajes</h1>
+        <p class="lead">En este sitio puedes encontrar información sobre todos los personajes de Star Wars, desde la primera película hasta la última.</p>
+        <p class="lead">
+          <a [routerLink]="['/backend']" class="btn btn-lg btn-secondary">Hecha un vistazo</a>
+        </p>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

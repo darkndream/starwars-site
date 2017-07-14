@@ -1,0 +1,16 @@
+/*
+* Base structure
+*/
+html.landing, body.landing {
+    height: 100%;
+    background-color: #000011;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+body.landing {
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+    background-image: url('/assets/deathball.png');
+}
