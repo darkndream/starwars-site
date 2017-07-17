@@ -19,12 +19,18 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+
+        "../node_modules/datatables.net-bs/css/dataTables.bootstrap.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/tether/dist/js/tether.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+
+        "../node_modules/datatables.net",
+        "../node_modules/datatables.net-bs/js/dataTables.bootstrap.js"
+
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

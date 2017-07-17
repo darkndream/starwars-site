@@ -7,6 +7,9 @@ import { SWApiService } from '../../services/swapi.service';
 import { IPeople } from '../../models/IPeople';
 import { IAlert } from '../../models/IAlert';
 
+import * as $ from 'jquery';
+import "datatables.net";
+
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -33,15 +36,13 @@ export class CharactersComponent extends InformationViewCycle implements AfterVi
   }
 
   ngAfterViewInit() {
-    let that = this;
-    //setTimeout(()=>{
-      that.characters = that.swapiService.GetAllCharacters();
-      if (that.characters.length <= 0) {
-        that.alert.message = "No se han encontrado resultados <i class='fa fa-cog fa-spin'></i>";
-        that.alert.type = "warning";
-      }
-      that.cdRef.detectChanges();
-    //},3000);
+    this.characters = this.swapiService.GetAllCharacters();
+    if (this.characters.length <= 0) {
+      this.alert.message = "No se han encontrado resultados <i class='fa fa-cog fa-spin'></i>";
+      this.alert.type = "warning";
+    }
+    this.cdRef.detectChanges();
+    $('#charactersTable').DataTable();
   }
 
 }
