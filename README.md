@@ -1,4 +1,8 @@
-# StarWarsSite
+# StarWars Site
+
+# Developer notes
+I used the following commands to generate the project, i added the following dependencies:
+https://gist.github.com/darkndream/e0a433f5ae2d40c1f3472ec4de6cb7ae
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
