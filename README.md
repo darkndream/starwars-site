@@ -1,4 +1,3 @@
-[![npm][npm-badge]][npm-badge-url]
 # StarWars site
 
 ## Developer notes
