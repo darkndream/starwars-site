@@ -1,10 +1,15 @@
-# StarWars Site
+# StarWars site
 
-# Developer notes
+## Developer notes
 I used the following commands to generate the project, i added the following dependencies:
 https://gist.github.com/darkndream/e0a433f5ae2d40c1f3472ec4de6cb7ae
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+
+## Angular CLI
+
+More documentation can be found on:
+https://github.com/angular/angular-cli
 
 ## Development server
 
@@ -12,7 +17,20 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+See Angular CLI documentation.
+
+## Project structure
+
+I'm using the following structure, please respect that:
+
+`ng g module my-module --routing` for modules that involve routing
+Then i create a folder named components under the module
+
+`ng g component my-component --module=my-module` for components
+Move the component under my-module/components and change it's reference
+in the my-module/my-module.module.ts file.
+
+Same module reference is used for services.
 
 ## Build
 
