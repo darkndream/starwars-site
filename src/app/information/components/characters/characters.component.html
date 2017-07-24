@@ -1,32 +1,81 @@
 <app-nav selectedPage="Characters"></app-nav>
-<div class="container">
-  <div class="starter-template">
-    <h1>Personajes</h1>
-    <hr/>
-    <div *ngIf="characters.length > 0; then tableContent else emptyMessage"></div>
+<div class="container text-center">
+  <h1>Personajes</h1>
+  <div class="row">
+    <div class="col-lg-12">
+      <ngb-tabset #t="ngbTabset">
+        <ngb-tab id="charactersTableTab" title="Tabla de personajes">
+          <ng-template ngbTabContent>
+              <br/>
+              <input (input)="onSearchChange($event.target.value)" type="text" class="form-control text-center" placeholder="Buscar" aria-label="search">
+              <hr/>
+              <div *ngIf="characters.length > 0; then tableContent else emptyMessage"></div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab id="specificCharacterTab" title="Personajes en específico">
+          <ng-template ngbTabContent>
+              <br/>
+              <input (input)="onSearchSpecificChange($event.target.value)" type="text" class="form-control text-center" placeholder="Buscar" aria-label="search">
+              <hr/>
+              <div *ngIf="currentCharacter != null; then characterContent else emptyMessage"></div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
-<ng-template #tableContent>
-  <table id="charactersTable" class="table table-hover">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Altura</th>
-        <th>Color de piel/pelaje</th>
-        <th>Género</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let character of characters">
-      <tr>
-        <td>{{character.name}}</td>
-        <td>{{character.height}}</td>
-        <td>{{character.skin_color}}</td>
-        <td>{{character.gender}}</td>
-      </tr>
-    </tbody>
-  </table>
+
+<ng-template #characterContent>
+  <dl class="dl-horizontal">
+
+    <dt>Nombre</dt>
+    <dd>{{currentCharacter.name}}</dd>
+
+    <dt>Altura</dt>
+    <dd>{{currentCharacter.height}}</dd>
+
+    <dt>Color de piel/pelaje</dt>
+    <dd>{{currentCharacter.skin_color}}</dd>
+
+    <dt>Color de ojos</dt>
+    <dd>{{currentCharacter.eye_color}}</dd>
+
+    <dt>Género</dt>
+    <dd>{{currentCharacter.gender}}</dd>
+
+  </dl>
 </ng-template>
+
+<ng-template #tableContent>
+  <div class="table-responsive">
+    <table id="charactersTable" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Altura</th>
+          <th>Color de piel/pelaje</th>
+          <th>Género</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let character of characters">
+        <tr>
+          <td>{{character.name}}</td>
+          <td>{{character.height}}</td>
+          <td>{{character.skin_color}}</td>
+          <td>{{character.gender}}</td>
+          <td><button (click)="setSelectedCharacter(character);t.select('specificCharacterTab')" class="btn btn-info btn-sm fa fa-eye" type="button"></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
 <ng-template #emptyMessage>
-  <ngb-alert [dismissible]="false" [type]="alert.type" (close)="closeAlert(alert)">{{alert.message}}</ngb-alert>
+  <div class="row">
+    <div class="col-lg-12">
+      <ngb-alert [dismissible]="false" [type]="alert.type" (close)="closeAlert(alert)">{{alert.message}}</ngb-alert>
+    </div>
+  </div>
 </ng-template>
