@@ -1,0 +1,37 @@
+<h2>Naves</h2>
+<hr/>
+<div *ngIf="starships == null || starships == undefined || starships.length == 0; then emptyMessage else starshipsTable"></div>
+<ng-template #starshipsTable>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Cantidad de pasajeros</th>
+          <th>Longitud</th>
+          <th>Marca</th>
+          <th>Personal de manejo</th>
+          <th>Costo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let starship of starships">
+          <td>{{starship.model}}</td>
+          <td>{{starship.passengers}}</td>
+          <td>{{starship.length}}</td>
+          <td>{{starship.manufacturer}}</td>
+          <td>{{starship.crew}}</td>
+          <td>{{starship.cost_in_credits}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+<ng-template #emptyMessage>
+    <ngb-alert 
+      [dismissible]="false" 
+      [type]="alert.type" 
+      (close)="closeAlert(alert)">
+      {{alert.message}}
+  </ngb-alert>
+</ng-template>

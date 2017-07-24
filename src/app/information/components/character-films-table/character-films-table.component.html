@@ -1,0 +1,35 @@
+<h2>Peliculas</h2>
+<hr/>
+<div *ngIf="films == null || films == undefined || films.length == 0; then emptyMessage else filmsTable"></div>
+<ng-template #filmsTable>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Episodio</th>
+          <th>Director</th>
+          <th>Productor</th>
+          <th>Año de salida</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let film of films">
+          <td>{{film.title}}</td>
+          <td>{{film.episode_id}}</td>
+          <td>{{film.director}}</td>
+          <td>{{film.producer}}</td>
+          <td>{{film.release_date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+<ng-template #emptyMessage>
+    <ngb-alert 
+      [dismissible]="false" 
+      [type]="alert.type" 
+      (close)="closeAlert(alert)">
+      {{alert.message}}
+  </ngb-alert>
+</ng-template>

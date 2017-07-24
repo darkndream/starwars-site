@@ -19,6 +19,51 @@ export class SWApiService {
     return this.getAllCharacters();
   }
 
+  public GetCharacterStarships(character: IPeople): Array<IStarship> {
+    let arrayOfStarships: Array<IStarship> = [];
+    character.starships.forEach(starshipUrl => {
+      let result = <IStarship>$.ajax({
+        method: 'GET',
+        async: false,
+        url: <string>starshipUrl
+      }).responseJSON;
+      if (result !== undefined && result != null) {
+        arrayOfStarships.push(result);
+      }
+    });
+    return arrayOfStarships;
+  }
+
+  public GetCharacterVehicles(character: IPeople): Array<IVehicle> {
+    let arrayOfVehicles: Array<IVehicle> = [];
+    character.vehicles.forEach(vehicleUrl => {
+      let result = <IVehicle>$.ajax({
+        method: 'GET',
+        async: false,
+        url: <string>vehicleUrl
+      }).responseJSON;
+      if (result !== undefined && result != null) {
+        arrayOfVehicles.push(result);
+      }
+    });
+    return arrayOfVehicles;
+  }
+
+  public GetCharacterFilms(character: IPeople): Array<IFilm> {
+    let arrayOfFilms: Array<IFilm> = [];
+    character.films.forEach(filmUrl => {
+      let result = <IFilm>$.ajax({
+        method: 'GET',
+        async: false,
+        url: <string>filmUrl
+      }).responseJSON;
+      if (result !== undefined && result != null) {
+        arrayOfFilms.push(result);
+      }
+    });
+    return arrayOfFilms;
+  }
+
   private getAllCharacters(peopleArray: Array<IPeople> = [], currentPage = 1): Array<IPeople> {
     let result = <IPeopleList>$.ajax({
       method: 'GET',

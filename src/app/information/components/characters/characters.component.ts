@@ -5,6 +5,7 @@ import { SWApiService } from '../../services/swapi.service';
 
 import { IPeople } from '../../models/IPeople';
 import { IAlert } from '../../models/IAlert';
+import { IVehicle } from '../../models/IVehicle';
 
 @Component({
   selector: 'app-characters',
@@ -79,5 +80,5 @@ export class CharactersComponent extends InformationViewCycle {
       this.currentCharacter = searchResults[0];
     }
   }
-
+  
 }
