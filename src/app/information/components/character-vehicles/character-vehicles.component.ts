@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SWApiService } from "../../services/swapi.service";
 import { IAlert } from "../../models/IAlert";
-//
 @Component({
   selector: 'app-character-vehicles',
   templateUrl: './character-vehicles.component.html',
