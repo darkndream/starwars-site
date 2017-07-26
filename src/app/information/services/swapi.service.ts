@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http';
+
+import { Observable } from 'rxjs';
+import 'rxjs/Operator';
 
 import { IPeople } from '../models/IPeople';
 import { IPeopleList } from '../models/IPeopleList';
@@ -13,8 +17,50 @@ export class SWApiService {
 
   private baseUrl: String = "http://swapi.co/api"
 
-  constructor() { }
+  
+  constructor(private http: Http) { }
 
+  public GetCharactersPageObservable(currentPage: number): Observable<IPeopleList> {
+    return this.http
+    .get(`${this.baseUrl}/people/?page=${currentPage}&format=json`)
+    .map(result => <IPeopleList>result.json());
+  }
+
+  /* 87 Total characers */
+  public GetCharacterObservable(characterNumber: number): Observable<IPeople> {
+    return this.http
+    .get(`${this.baseUrl}/people/${characterNumber}?format=json`)
+    .map(result => <IPeople>result.json());
+  }
+
+  public GetCharacterStarshipsObservable(character: IPeople): Array<Observable<IStarship>> {
+    let that = this;
+    let results: Array<Observable<IStarship>> = [];
+    character.starships.forEach(starship => {
+      results.push(
+        that.http
+        .get(<string>starship)
+        .map(result => <IStarship>result.json())
+      );
+    });
+    return results;
+  }
+
+  public GetCharacterVehiclesObservable(character: IPeople): Array<Observable<IVehicle>> {
+    let that = this;
+    let results: Array<Observable<IVehicle>> = [];
+    character.vehicles.forEach(vehicle => {
+      results.push(
+        that.http
+        .get(<string>vehicle)
+        .map(result => <IVehicle>result.json())
+      );
+    });
+    return results;
+  }
+
+  /* OLD, UGLY AND BAD CODE */
+  
   public GetAllCharacters(): Array<IPeople> {
     return this.getAllCharacters();
   }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
 import { CharactersComponent } from './components/characters/characters.component';
+import { CharactersTableComponent } from "./components/characters-table/characters-table.component";
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'characters',
-        component: CharactersComponent
+        component: CharactersTableComponent
       }
     ]
   }

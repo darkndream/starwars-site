@@ -17,16 +17,21 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SWApiService } from './services/swapi.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CharactersTableComponent } from './components/characters-table/characters-table.component';
 
-
+import { HttpModule } from '@angular/http';
+import { CharacterVehiclesComponent } from '../character-vehicles/character-vehicles.component';
+import { CharacterStarshipsComponent } from '../character-starships/character-starships.component';
+import { CharacterFilmsComponent } from '../character-films/character-films.component';
 
 @NgModule({
   imports: [
     CommonModule,
     InformationRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpModule
   ],
-  declarations: [FrontpageComponent, CharactersComponent, NavComponent, FooterComponent, CharacterVehiclesTableComponent, CharacterStarshipsTableComponent, CharacterFilmsTableComponent],
+  declarations: [FrontpageComponent, CharactersComponent, NavComponent, FooterComponent, CharacterVehiclesTableComponent, CharacterStarshipsTableComponent, CharacterFilmsTableComponent, CharactersTableComponent, CharacterVehiclesComponent, CharacterStarshipsComponent, CharacterFilmsComponent],
   providers: [SWApiService]
 })
 export class InformationModule { }
