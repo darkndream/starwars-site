@@ -8,10 +8,6 @@ import { FrontpageComponent } from './components/frontpage/frontpage.component';
 
 import { CharactersTableComponent } from './components/characters-table/characters-table.component';
 
-import { CharacterVehiclesTableComponent } from './components/character-vehicles-table/character-vehicles-table.component';
-import { CharacterStarshipsTableComponent } from './components/character-starships-table/character-starships-table.component';
-import { CharacterFilmsTableComponent } from './components/character-films-table/character-films-table.component';
-
 import { CharacterComponent } from './components/character/character.component';
 
 import { CharacterVehiclesComponent } from './components/character-vehicles/character-vehicles.component';

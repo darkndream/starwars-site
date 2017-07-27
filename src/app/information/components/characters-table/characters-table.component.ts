@@ -89,4 +89,8 @@ export class CharactersTableComponent extends InformationViewCycle {
     this.fullCharacters = this.characters.slice();
   }
 
+  getCharacterId(character: IPeople): number {
+    return parseInt(/\d+/g.exec(character.url)[0]);
+  }
+
 }

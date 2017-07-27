@@ -41,7 +41,7 @@
             <td>{{character.height}}</td>
             <td>{{character.skin_color}}</td>
             <td>{{character.gender}}</td>
-            <td><a href="#">Ver</a></td>
+            <td><a [routerLink]="['/information/character', getCharacterId(character)]">Ver</a></td>
           </tr>
         </tbody>
       </table>    
