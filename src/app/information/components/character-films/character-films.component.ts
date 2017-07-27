@@ -26,6 +26,7 @@ export class CharacterFilmsComponent implements OnInit {
   constructor(private swapiService: SWApiService) { }
 
   ngOnInit() {
+    
     this.totalFilms = this.character.films.length;
     this.requestForFilms();
   }

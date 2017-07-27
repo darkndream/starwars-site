@@ -1,5 +1,7 @@
-<div *ngIf="isLoading; then loadingScreen else filmsContent"></div>
-
+<div *ngIf="character.films.length > 0;">
+  <div *ngIf="isLoading; then loadingScreen else filmsContent">
+  </div>
+</div>
 <ng-template #loadingScreen>
   <p class="text-center">Cargando... <i class="fa fa-cog fa-spin"></i></p>
   <ngb-progressbar type="primary" [value]="completion" [striped]="false" [animated]="false">
@@ -16,7 +18,7 @@
         <tr>
           <th>Episodio</th>
           <th>Titulo</th>
-          <th>Fecha de estreno</th>
+          <th>Estreno</th>
           <th>Director</th>
           <th>Productor</th>
         </tr>

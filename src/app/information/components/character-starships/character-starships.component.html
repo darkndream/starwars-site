@@ -1,4 +1,7 @@
-<div *ngIf="isLoading; then loadingScreen else starshipsContent"></div>
+<div *ngIf="character.starships.length > 0;">
+  <div *ngIf="isLoading; then loadingScreen else starshipsContent">
+  </div>
+</div>
 
 <ng-template #loadingScreen>
   <p class="text-center">Cargando... <i class="fa fa-cog fa-spin"></i></p>

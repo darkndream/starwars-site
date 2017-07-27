@@ -1,4 +1,7 @@
-<div *ngIf="isLoading; then loadingScreen else vehiclesContent"></div>
+<div *ngIf="character.vehicles.length > 0;">
+  <div *ngIf="isLoading; then loadingScreen else vehiclesContent">
+  </div>
+</div>
 
 <ng-template #loadingScreen>
   <p class="text-center">Cargando... <i class="fa fa-cog fa-spin"></i></p>
@@ -8,7 +11,7 @@
 </ng-template>
 
 <ng-template #vehiclesContent>
-  <h2 class="text-center">Naves espaciales</h2>
+  <h2 class="text-center">Vehículos</h2>
   <hr/>
   <div class="table-responsive">
     <table class="table table-hover">
