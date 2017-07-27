@@ -5,11 +5,18 @@ import { InformationRoutingModule } from './information-routing.module';
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
 
 /* Characters */
-import { CharactersComponent } from './components/characters/characters.component';
+
+import { CharactersTableComponent } from './components/characters-table/characters-table.component';
 
 import { CharacterVehiclesTableComponent } from './components/character-vehicles-table/character-vehicles-table.component';
 import { CharacterStarshipsTableComponent } from './components/character-starships-table/character-starships-table.component';
 import { CharacterFilmsTableComponent } from './components/character-films-table/character-films-table.component';
+
+import { CharacterComponent } from './components/character/character.component';
+
+import { CharacterVehiclesComponent } from './components/character-vehicles/character-vehicles.component';
+import { CharacterStarshipsComponent } from './components/character-starships/character-starships.component';
+import { CharacterFilmsComponent } from './components/character-films/character-films.component';
 /* /Characters */
 
 import { NavComponent } from './components/nav/nav.component';
@@ -17,12 +24,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SWApiService } from './services/swapi.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CharactersTableComponent } from './components/characters-table/characters-table.component';
 
 import { HttpModule } from '@angular/http';
-import { CharacterVehiclesComponent } from '../character-vehicles/character-vehicles.component';
-import { CharacterStarshipsComponent } from '../character-starships/character-starships.component';
-import { CharacterFilmsComponent } from '../character-films/character-films.component';
+
+
 
 @NgModule({
   imports: [
@@ -31,7 +36,7 @@ import { CharacterFilmsComponent } from '../character-films/character-films.comp
     NgbModule,
     HttpModule
   ],
-  declarations: [FrontpageComponent, CharactersComponent, NavComponent, FooterComponent, CharacterVehiclesTableComponent, CharacterStarshipsTableComponent, CharacterFilmsTableComponent, CharactersTableComponent, CharacterVehiclesComponent, CharacterStarshipsComponent, CharacterFilmsComponent],
+  declarations: [FrontpageComponent, NavComponent, FooterComponent, CharacterVehiclesTableComponent, CharacterStarshipsTableComponent, CharacterFilmsTableComponent, CharactersTableComponent, CharacterVehiclesComponent, CharacterStarshipsComponent, CharacterFilmsComponent, CharacterComponent],
   providers: [SWApiService]
 })
 export class InformationModule { }

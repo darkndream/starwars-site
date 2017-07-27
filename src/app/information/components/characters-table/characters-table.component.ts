@@ -19,8 +19,14 @@ export class CharactersTableComponent extends InformationViewCycle {
   public characters: Array<IPeople> = [];
   
   private fullCharacters: Array<IPeople> = [];
-  private currentPage: number = 1;
-  private isLoading: boolean = true;
+
+  /* Loading screen */
+  private currentLoadingPage: number = 1;
+  public isLoading: boolean = true;
+  public completion: number = 0;
+  public loadedCharacters: number = 0;
+  public totalCharacters: number = 0;
+  /* Loading screen */
 
   public alert: IAlert = {
     id:1,
@@ -38,11 +44,11 @@ export class CharactersTableComponent extends InformationViewCycle {
   requestForCharacters() {
     try {
       let that = this;
-      this.swapiService.GetCharactersPageObservable(this.currentPage)
+      this.swapiService.GetCharactersPageObservable(this.currentLoadingPage)
       .subscribe(result => {
         Array.prototype.push.apply(that.characters, result.results);
         if (result.next != null) {
-          that.currentPage++;
+          that.updateLoadingProgression(result);
           that.requestForCharacters();
         } else {
           that.didLoadCharacters();
@@ -58,7 +64,7 @@ export class CharactersTableComponent extends InformationViewCycle {
     
     if (this.isLoading) return;
 
-    if(text.length == 0) {
+    if (text.length == 0) {
       this.characters = this.fullCharacters.slice();
     } else {
       this.characters = this.fullCharacters.filter(character => 
@@ -69,6 +75,13 @@ export class CharactersTableComponent extends InformationViewCycle {
       );
     }
     
+  }
+
+  updateLoadingProgression(result: IPeopleList) {
+    this.totalCharacters = result.count;
+    this.loadedCharacters = this.characters.length;
+    this.completion = (this.loadedCharacters / this.totalCharacters) * 100;
+    this.currentLoadingPage++;
   }
 
   didLoadCharacters() {

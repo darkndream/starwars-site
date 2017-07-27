@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SWApiService } from "../../services/swapi.service";
 import { IAlert } from "../../models/IAlert";
 @Component({
@@ -8,7 +8,7 @@ import { IAlert } from "../../models/IAlert";
 })
 export class CharacterVehiclesComponent implements OnInit {
 
-  @input()
+  @Input()
   public character
 
   public alert: IAlert = {

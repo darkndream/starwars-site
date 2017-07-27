@@ -4,39 +4,52 @@
   <hr/>
   <div class="row">
     <div class="col-md-12">
-      <h2 class="text-center" *ngIf="isLoading">Cargando tabla de personajes <i class="fa fa-cog fa-spin"></i></h2>
-      <input (input)="onSearchChange($event.target.value)" type="text" class="form-control text-center" placeholder="Buscar" aria-label="search">
-      <hr/>
-      <div *ngIf="characters.length > 0; then tableContent else errorMessage">
-      </div>
+      <div *ngIf="isLoading; then loadingScreen else charactersContent"></div>
     </div>
   </div>
 </div>
 <app-footer></app-footer>
-<ng-template #tableContent>
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Altura</th>
-          <th>Color de piel/pelaje</th>
-          <th>Género</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let character of characters">
-          <td>{{character.name}}</td>
-          <td>{{character.height}}</td>
-          <td>{{character.skin_color}}</td>
-          <td>{{character.gender}}</td>
-          <td><a href="#">Ver</a></td>
-        </tr>
-      </tbody>
-    </table>    
-  </div>
+
+<ng-template #loadingScreen>
+  <p class="text-center">Cargando... <i class="fa fa-cog fa-spin"></i></p>
+  <ngb-progressbar type="primary" [value]="completion" [striped]="false" [animated]="false">
+    Cargando: <b>{{loadedCharacters}} de {{totalCharacters}}</b> personajes
+  </ngb-progressbar>
 </ng-template>
-<ng-template #errorMessage>
-  <ngb-alert [dismissible]="false" [type]="alert.type" (close)="closeAlert(alert)">{{alert.message}}</ngb-alert>
+
+<ng-template #charactersContent>
+
+  <input (input)="onSearchChange($event.target.value)" type="text" class="form-control text-center" placeholder="Buscar" aria-label="search">
+  <hr/>
+  <div *ngIf="characters.length > 0; then charactersTable else emptyMessage"></div>
+
+  <ng-template #charactersTable>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Altura</th>
+            <th>Color de piel/pelaje</th>
+            <th>Género</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let character of characters">
+            <td>{{character.name}}</td>
+            <td>{{character.height}}</td>
+            <td>{{character.skin_color}}</td>
+            <td>{{character.gender}}</td>
+            <td><a href="#">Ver</a></td>
+          </tr>
+        </tbody>
+      </table>    
+    </div>
+  </ng-template>
+
+  <ng-template #emptyMessage>
+    <ngb-alert [dismissible]="false" [type]="alert.type" (close)="closeAlert(alert)">{{alert.message}}</ngb-alert>
+  </ng-template>
+
 </ng-template>

@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FrontpageComponent } from './components/frontpage/frontpage.component';
-import { CharactersComponent } from './components/characters/characters.component';
 import { CharactersTableComponent } from "./components/characters-table/characters-table.component";
+import { CharacterComponent } from "./components/character/character.component";
 
 const routes: Routes = [
   {
@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'characters',
         component: CharactersTableComponent
+      },
+      {
+        path: 'character/:id',
+        component: CharacterComponent
       }
     ]
   }
