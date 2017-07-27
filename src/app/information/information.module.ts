@@ -23,8 +23,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpModule } from '@angular/http';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -32,7 +30,7 @@ import { HttpModule } from '@angular/http';
     NgbModule,
     HttpModule
   ],
-  declarations: [FrontpageComponent, NavComponent, FooterComponent, CharacterVehiclesTableComponent, CharacterStarshipsTableComponent, CharacterFilmsTableComponent, CharactersTableComponent, CharacterVehiclesComponent, CharacterStarshipsComponent, CharacterFilmsComponent, CharacterComponent],
+  declarations: [FrontpageComponent, NavComponent, FooterComponent, CharactersTableComponent, CharacterVehiclesComponent, CharacterStarshipsComponent, CharacterFilmsComponent, CharacterComponent],
   providers: [SWApiService]
 })
 export class InformationModule { }

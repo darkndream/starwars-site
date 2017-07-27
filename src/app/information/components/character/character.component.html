@@ -1,27 +1,46 @@
 <app-nav selectedPage="Character"></app-nav>
 
 <div class="container">
-  <h1 class="text-center">Personaje</h1>
-  <hr/>
-  <div class="row">
-    <div class="col-md-12">
-      <div *ngIf="oCharacter | async; let character; else loadingScreen">
-        <dl class="dl-horizontal">
-          <dt>Nombre</dt>
-          <dd>{{character.name}}</dd>
-
-          <dt>Altura</dt>
-          <dd>{{character.height}}</dd>
-
-          <dt>Color de piel/pelaje</dt>
-          <dd>{{character.skin_color}}</dd>
-
-          <dt>Color de ojos</dt>
-          <dd>{{character.eye_color}}</dd>
-
-          <dt>Género</dt>
-          <dd>{{character.gender}}</dd>
-        </dl>
+  <div *ngIf="oCharacter | async; let character; else loadingScreen">
+    <h1 class="text-center">{{character.name}}</h1>
+    <hr/>
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="text-center">Datos</h2>
+        <hr/>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Altura</th>
+                <th>Color de piel/pelaje</th>
+                <th>Color de ojos</th>
+                <th>Género</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{character.name}}</td>
+                <td>{{character.height}}</td>
+                <td>{{character.skin_color}}</td>
+                <td>{{character.eye_color}}</td>
+                <td>{{character.gender}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <app-character-films [character]="character"></app-character-films>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <app-character-starships [character]="character"></app-character-starships>
+      </div>
+      <div class="col-md-6">
+        <app-character-vehicles [character]="character"></app-character-vehicles>
       </div>
     </div>
   </div>

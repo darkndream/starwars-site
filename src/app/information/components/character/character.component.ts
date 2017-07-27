@@ -8,7 +8,7 @@ import { SWApiService } from "../../services/swapi.service";
 @Component({
   selector: 'app-character',
   templateUrl: './character.component.html',
-  styleUrls: ['./character.component.scss']
+  styleUrls: ['../frontpage/frontpage.component.scss','./character.component.scss']
 })
 export class CharacterComponent extends InformationViewCycle {
 

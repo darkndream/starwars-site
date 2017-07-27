@@ -1,3 +1,35 @@
-<p>
-  character-starships works!
-</p>
+<div *ngIf="isLoading; then loadingScreen else starshipsContent"></div>
+
+<ng-template #loadingScreen>
+  <p class="text-center">Cargando... <i class="fa fa-cog fa-spin"></i></p>
+  <ngb-progressbar type="primary" [value]="completion" [striped]="false" [animated]="false">
+    Cargando: <b>{{loadedStarships}} de {{totalStarships}}</b> naves
+  </ngb-progressbar>
+</ng-template>
+
+<ng-template #starshipsContent>
+  <h2 class="text-center">Naves espaciales</h2>
+  <hr/>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Marca</th>
+          <th>Costo</th>
+          <th>Pasajeros</th>
+          <th>Carga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let starship of starships">
+          <td>{{starship.name}}</td>
+          <td>{{starship.manufacturer}}</td>
+          <td>{{starship.cost_in_credits}}</td>
+          <td>{{starship.passengers}}</td>
+          <td>{{starship.cargo_capacity}}</td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+</ng-template>

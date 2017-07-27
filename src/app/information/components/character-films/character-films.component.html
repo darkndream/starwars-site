@@ -1,3 +1,35 @@
-<p>
-  character-films works!
-</p>
+<div *ngIf="isLoading; then loadingScreen else filmsContent"></div>
+
+<ng-template #loadingScreen>
+  <p class="text-center">Cargando... <i class="fa fa-cog fa-spin"></i></p>
+  <ngb-progressbar type="primary" [value]="completion" [striped]="false" [animated]="false">
+    Cargando: <b>{{loadedFilms}} de {{totalFilms}}</b> películas
+  </ngb-progressbar>
+</ng-template>
+
+<ng-template #filmsContent>
+  <h2 class="text-center">Películas</h2>
+  <hr/>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Episodio</th>
+          <th>Titulo</th>
+          <th>Fecha de estreno</th>
+          <th>Director</th>
+          <th>Productor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let film of films">
+          <td>{{film.episode_id}}</td>
+          <td>{{film.title}}</td>
+          <td>{{film.release_date}}</td>
+          <td>{{film.director}}</td>
+          <td>{{film.producer}}</td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+</ng-template>

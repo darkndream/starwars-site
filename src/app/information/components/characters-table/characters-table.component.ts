@@ -49,6 +49,7 @@ export class CharactersTableComponent extends InformationViewCycle {
         Array.prototype.push.apply(that.characters, result.results);
         if (result.next != null) {
           that.updateLoadingProgression(result);
+          that.currentLoadingPage++;
           that.requestForCharacters();
         } else {
           that.didLoadCharacters();
@@ -81,7 +82,6 @@ export class CharactersTableComponent extends InformationViewCycle {
     this.totalCharacters = result.count;
     this.loadedCharacters = this.characters.length;
     this.completion = (this.loadedCharacters / this.totalCharacters) * 100;
-    this.currentLoadingPage++;
   }
 
   didLoadCharacters() {

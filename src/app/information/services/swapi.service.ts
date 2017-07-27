@@ -59,6 +59,19 @@ export class SWApiService {
     return results;
   }
 
+  public GetCharacterFilmsObservable(character: IPeople): Array<Observable<IFilm>> {
+    let that = this;
+    let results: Array<Observable<IFilm>> = [];
+    character.films.forEach(film => {
+      results.push(
+        that.http
+        .get(<string>film)
+        .map(result => <IFilm>result.json())
+      );
+    });
+    return results;
+  }
+
   /* OLD, UGLY AND BAD CODE */
   
   public GetAllCharacters(): Array<IPeople> {
